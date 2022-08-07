@@ -15,5 +15,7 @@ namespace BlazorECommerce.Shared
         public string ImageUrl { get; set; } = string.Empty;
         [Column(TypeName="decimal(18,2)")] //perlu annotation ini tuk migration ke sql server nya, define accuracy decimal nya
         public decimal Price { get; set; }
+        public Category? Category { get; set; }
+        public int CategoryId { get; set; } //CategoryId as a foreign key from Category
     }
 }
