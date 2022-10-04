@@ -50,6 +50,10 @@ builder.Services.AddAuthentication(JwtBearerDefaults.AuthenticationScheme)
     });
 //for authentication [end]
 
+//HttpContextAccessor for access User in the Services [start]
+builder.Services.AddHttpContextAccessor();
+//HttpContextAccessor for access User in the Services [end]
+
 var app = builder.Build();
 
 //for swagger [start]
