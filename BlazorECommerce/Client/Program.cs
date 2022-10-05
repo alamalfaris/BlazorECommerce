@@ -4,6 +4,7 @@ global using BlazorECommerce.Client.Services.ProductService;
 global using BlazorECommerce.Client.Services.CategoryService;
 global using BlazorECommerce.Client.Services.CartService;
 global using BlazorECommerce.Client.Services.AuthService;
+global using BlazorECommerce.Client.Services.OrderService;
 global using Microsoft.AspNetCore.Components.Authorization;
 using BlazorECommerce.Client;
 using Microsoft.AspNetCore.Components.Web;
@@ -25,6 +26,7 @@ builder.Services.AddScoped<IProductService, ProductService>();
 builder.Services.AddScoped<ICategoryService, CategoryService>();
 builder.Services.AddScoped<ICartService, CartService>();
 builder.Services.AddScoped<IAuthService, AuthService>();
+builder.Services.AddScoped<IOrderService, OrderService>();
 //for services [end]
 
 //for AuthenticationStateProvider [start]
