@@ -74,11 +74,16 @@ namespace BlazorECommerce.Server.Services.CartService
             return new ServiceResponse<int> { Data = count };
         }
 
-        public async Task<ServiceResponse<List<CartProductResponse>>> GetCartProductsDb()
+        public async Task<ServiceResponse<List<CartProductResponse>>> GetCartProductsDb(int? userId = null)
         {
+            if (userId == null)
+            {
+                userId = _authService.GetUserId();
+            }
+
             return await GetCartProducts(
                 await _context.CartItems
-                .Where(ci => ci.UserId == _authService.GetUserId()).ToListAsync());
+                .Where(ci => ci.UserId == userId).ToListAsync());
         }
 
         public async Task<ServiceResponse<bool>> AddToCart(CartItem cartItem)

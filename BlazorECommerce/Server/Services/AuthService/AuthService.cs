@@ -25,6 +25,12 @@ namespace BlazorECommerce.Server.Services.AuthService
             return int.Parse(userId);
         }
 
+        public string GetUserEmail()
+        {
+            var userEmail = _httpContextAccessor.HttpContext.User.FindFirstValue(ClaimTypes.Name);
+            return userEmail;
+        }
+
         public async Task<ServiceResponse<string>> Login(string email, string password)
         {
             var response = new ServiceResponse<string>();
@@ -144,6 +150,11 @@ namespace BlazorECommerce.Server.Services.AuthService
                 Data = true,
                 Message = "The password has been changed"
             };
+        }
+
+        public async Task<User> GetUserByEmail(string email)
+        {
+            return await _context.Users.FirstOrDefaultAsync(u => u.Email.Equals(email));
         }
     }
 }
