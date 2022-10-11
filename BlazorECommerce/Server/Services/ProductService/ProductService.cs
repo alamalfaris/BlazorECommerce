@@ -54,6 +54,7 @@
                         .Where(p => p.Category.Url.ToLower().Equals(categoryUrl.ToLower()) &&
                             p.Visible && !p.Deleted)
                         .Include(p => p.Variants.Where(v => v.Visible && !v.Deleted))
+                        .Include(p => p.Images)
                         .ToListAsync()
             };
 
